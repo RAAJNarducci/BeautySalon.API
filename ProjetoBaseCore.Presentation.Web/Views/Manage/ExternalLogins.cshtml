@@ -1,0 +1,56 @@
+﻿@model ExternalLoginsViewModel
+@{
+    ViewData["Title"] = "Manage your external logins";
+    ViewData.AddActivePage(ManageNavPages.ExternalLogins);
+}
+<body class="body-registro">
+@Html.Partial("_StatusMessage", Model.StatusMessage)
+@if (Model.CurrentLogins?.Count > 0)
+{
+    <h4>Login com redes sociais</h4>
+    <table class="table">
+        <tbody>
+            @foreach (var login in Model.CurrentLogins)
+            {
+                <tr>
+                    <td>@login.LoginProvider</td>
+                    <td>
+                        @if (Model.ShowRemoveButton)
+                        {
+                            <form asp-action="RemoveLogin" method="post">
+                                <div>
+                                    <input asp-for="@login.LoginProvider" name="LoginProvider" type="hidden" />
+                                    <input asp-for="@login.ProviderKey" name="ProviderKey" type="hidden" />
+                                    <button type="submit" class="btn btn-default" title="">Remover</button>
+                                </div>
+                            </form>
+                        }
+                        else
+                        {
+                            @: &nbsp;
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@if (Model.OtherLogins?.Count > 0)
+{
+    <h4>Adicionar login com redes sociais</h4>
+    <hr />
+    <form asp-action="LinkLogin" method="post" class="form-horizontal">
+        <div id="socialLoginList">
+            <p>
+               @foreach (var provider in Model.OtherLogins)
+                {
+                    <button type="submit" class="btn-action btn-block btn-social btn-@provider.Name.ToLower()" name="provider" value="@provider.Name">
+                        <span class="icon-social fa fa-@provider.Name.ToLower()"></span>
+                        @provider.Name
+                    </button>
+                }
+            </p>
+        </div>
+    </form>
+}
+</body>

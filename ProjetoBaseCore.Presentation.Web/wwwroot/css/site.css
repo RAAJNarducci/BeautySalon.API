@@ -1,0 +1,156 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 10px;
+}
+
+label {
+    font-family: initial;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: Tahoma;
+}
+
+.footer {
+    padding-top: 100px;
+}
+
+.form-control, .btn-action {
+    height: 50px;
+    border-radius: 4px;
+    border: 2px solid #808080;
+}
+
+.btn-action {
+    width: 150px;
+}
+
+    .btn-action:hover {
+        background-color: #FFFFFF;
+        border-radius: 15px 15px 15px 15px;
+    }
+
+/*Checkbox*/
+
+.cbHorarios {
+    width: 20px;
+    height: 20px;
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+/**/
+
+/*Tabelas*/
+
+.table-horarios td {
+    padding-right: 20px;
+}
+
+/**/
+
+/*Botões*/
+
+.btn-horario {
+    border-color: yellow;
+}
+.btn-registro {
+    border-color: #0094ff;
+}
+
+.btn-login {
+    border-color: #b200ff;
+}
+
+.btn-pessoa {
+    border-color: #59a942;
+}
+
+.btn-group {
+    background-color: #FFFFFF;
+    width: 50px;
+}
+
+.icon-social {
+    padding-top: 5px;
+}
+
+/**/
+
+/*Validations*/
+
+.input-validation-error {
+    border-color: #a94442;
+}
+
+.valid {
+    border-color: #59a942;
+}
+
+.validation-summary {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+    color: #a94442;
+    font-family: initial;
+    font-size: 16px;
+}
+
+/**/
+
+/*Bodys*/
+
+.body-registro {
+    background-image: url(../images/background-registro.png);
+    background-position: center;
+}
+
+.body-servico {
+    background-color: azure;
+}
+
+.body-horario {
+    background-color: oldlace;
+}
+
+.body-login {
+    background-image: url(../images/background-login.jpg);
+    background-position: center;
+}
+
+.body-cadastro {
+    background-color: #eaf7e1
+}
+
+.body-content {
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/**/
+
+/*Carousel*/
+
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+/**/
+
+#qrCode {
+    margin: 15px;
+}

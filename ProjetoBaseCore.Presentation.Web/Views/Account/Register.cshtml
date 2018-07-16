@@ -1,0 +1,63 @@
+﻿@model RegisterViewModel
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    ViewData["Title"] = "Crie seu login";
+}
+<body class="body-registro">
+    <h2 class="title">@ViewData["Title"]</h2>
+    <h4 class="subtitle">Você utilizará um login único, você pode ser um convidado ou a pessoa que dará a festa!</h4>
+
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+                <div asp-validation-summary="All" class="validation-summary">
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword"></label>
+                    <input asp-for="ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn-action btn-default btn-registro">Registrar</button>
+                <br />
+            </form>
+        </div>
+
+        <div class="col-md-6 col-md-offset-2">
+            <section>
+                @{
+                    var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+                    if (loginProviders.Count > 0)
+                    {
+                        <h4>Ou se preferir, utilize suas redes sociais:</h4>
+                        <form asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+                            <div>
+                                <p>
+                                    @foreach (var provider in loginProviders)
+                                    {
+                                        <button type="submit" class="btn-action btn-block btn-social btn-@provider.Name.ToLower()" name="provider" value="@provider.Name">
+                                            <span class="icon-social fa fa-@provider.Name.ToLower()"></span>
+                                            @provider.Name
+                                        </button>
+                                    }
+                                </p>
+                            </div>
+                        </form>
+                    }
+                }
+            </section>
+        </div>
+    </div>
+    @section Scripts {
+        @await Html.PartialAsync("_ValidationScriptsPartial")
+    }
+</body>
