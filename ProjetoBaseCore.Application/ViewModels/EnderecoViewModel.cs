@@ -42,7 +42,7 @@ namespace ProjetoBaseCore.Application.ViewModels
         [ScaffoldColumn(false)]
         public string CEPSemMascara
         {
-            get { return Regex.Replace(CEP, "[^0-9a-zA-Z]+", ""); }
+            get { return CEP != null ? Regex.Replace(CEP, "[^0-9a-zA-Z]+", "") : null; }
             set { }
         }
 

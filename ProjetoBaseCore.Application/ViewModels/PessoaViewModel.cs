@@ -35,6 +35,13 @@ namespace ProjetoBaseCore.Application.ViewModels
         public DateTime? DataNascimento { get; set; }
 
         [ScaffoldColumn(false)]
+        public string DataNascimentoSemMascara
+        {
+            get { return DataNascimento.HasValue ? Regex.Replace(DataNascimento.Value.ToShortDateString(), "[^0-9a-zA-Z]+", "") : null; }
+            set { }
+        }
+
+        [ScaffoldColumn(false)]
         public DateTime DataCadastro { get; private set; }
 
         [ScaffoldColumn(false)]
@@ -47,7 +54,7 @@ namespace ProjetoBaseCore.Application.ViewModels
         [ScaffoldColumn(false)]
         public string CpfSemMascara
         {
-            get { return Regex.Replace(Cpf, "[^0-9a-zA-Z]+", ""); }
+            get { return Cpf != null ? Regex.Replace(Cpf, "[^0-9a-zA-Z]+", "") : null; }
             set { }
         }
 

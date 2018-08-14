@@ -1,9 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using ProjetoBaseCore.Domain.Core;
 using ProjetoBaseCore.Domain.Core.Interfaces;
 using ProjetoBaseCore.Infra.Data.Context;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 

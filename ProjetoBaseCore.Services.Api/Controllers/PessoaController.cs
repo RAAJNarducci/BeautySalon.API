@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjetoBaseCore.Application.Interfaces;
 using ProjetoBaseCore.Application.ViewModels;
+using ProjetoBaseCore.Application.ViewModels.consulta;
 
 namespace ProjetoBaseCore.Services.Api.Controllers
 {
@@ -28,6 +29,21 @@ namespace ProjetoBaseCore.Services.Api.Controllers
             return _pessoaAppServiceBase.GetAll();
         }
 
+        [HttpGet]
+        [Route("GetById")]
+        public PessoaViewModel GetById(int id)
+        {
+            return _pessoaAppServiceBase.FindById(id);
+        }
+
+
+        [HttpGet]
+        [Route("BuscarPessoas")]
+        public PessoaResponseViewModel BuscarPessoas(PessoaConsultaViewModel pessoaConsultaViewModel)
+        {
+            return _pessoaAppServiceBase.BuscarPessoa(pessoaConsultaViewModel);
+        }
+
         [HttpPost]
         public void Post([FromBody] PessoaViewModel pessoaViewModel)
         {
@@ -40,5 +56,18 @@ namespace ProjetoBaseCore.Services.Api.Controllers
                 throw ex;
             }
         }
+
+        [HttpPut]
+        public void Put([FromBody] PessoaViewModel pessoaViewModel)
+        {
+            try
+            {
+                _pessoaAppServiceBase.Update(pessoaViewModel);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
-}
+}   

@@ -6,11 +6,13 @@ namespace ProjetoBaseCore.Application.ViewModels.consulta
 {
     public class AgendamentoResponse: ViewModelBase
     {
-        public string NomeCliente { get; set; }
+        public PessoaViewModel Cliente { get; set; }
+
+        public ServicoViewModel Servico { get; set; }
+
+        public StatusAgendamentoViewModel StatusAgendamento { get; set; }
 
         public string DataFormatada { get; set; }
-
-        public string DescricaoServico { get; set; }
 
         public TimeSpan HorarioInicio { get; set; }
 

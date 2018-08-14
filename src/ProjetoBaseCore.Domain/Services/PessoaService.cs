@@ -18,5 +18,10 @@ namespace ProjetoBaseCore.Domain.Services
         {
             return _repository.BuscarPessoaPorEmail(email);
         }
+
+        public IEnumerable<Pessoa> BuscarPessoa(string nome, string cpf, int pagina, int quantidadePagina, out int total)
+        {
+            return _repository.BuscarPessoa(nome, cpf, pagina, quantidadePagina, out total);
+        }
     }
 }
