@@ -69,5 +69,18 @@ namespace ProjetoBaseCore.Services.Api.Controllers
                 throw ex;
             }
         }
+
+        [HttpDelete]
+        public void Delete(int idPessoa)
+        {
+            try
+            {
+                _pessoaAppServiceBase.Delete(idPessoa);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }   
